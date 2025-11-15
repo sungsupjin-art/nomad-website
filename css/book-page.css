@@ -1,0 +1,217 @@
+/* Book Page Styles */
+
+.book-header {
+    padding: 8rem 0 4rem;
+    background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+}
+
+.book-header-content {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.book-cover img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.book-header-info {
+    padding-top: 1rem;
+}
+
+.book-page-title {
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+.book-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-style: italic;
+}
+
+.book-author {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.book-description {
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.book-description p {
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+
+.book-features {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.feature-icon {
+    font-size: 1.5rem;
+}
+
+.read-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 1.05rem;
+}
+
+.read-button:hover {
+    background: #d62839;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(230, 57, 70, 0.3);
+}
+
+/* Table of Contents */
+.toc-section {
+    padding: 4rem 0;
+}
+
+.toc-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.toc-part {
+    margin-bottom: 3rem;
+}
+
+.part-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--accent);
+}
+
+.chapter {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 2rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    background: var(--secondary-bg);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.chapter:hover {
+    background: #f0f0f0;
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.chapter-number {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.chapter-title {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+.chapter-description {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+}
+
+.chapter-meta {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+/* Nexus CTA in TOC */
+.nexus-cta {
+    max-width: 900px;
+    margin: 3rem auto 0;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 4px;
+    text-align: center;
+    color: white;
+}
+
+.nexus-cta h3 {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.nexus-cta p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .book-header-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .book-cover {
+        max-width: 350px;
+        margin: 0 auto;
+    }
+    
+    .chapter {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .book-page-title {
+        font-size: 2rem;
+    }
+    
+    .book-subtitle {
+        font-size: 1rem;
+    }
+    
+    .book-features {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
