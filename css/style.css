@@ -94,22 +94,92 @@ body {
     font-weight: 600;
 }
 
-/* Hero Section - Pageflow inspired */
+/* Hero Section - 이미지 합성 스타일 */
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    color: white;
-    text-align: center;
     position: relative;
     margin-top: 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+}
+
+.hero-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 1;
+}
+
+.hero-image-left,
+.hero-image-right {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+}
+
+.hero-image-left {
+    object-position: center right;
+}
+
+.hero-image-right {
+    object-position: center left;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(26, 26, 46, 0.7) 0%,
+        rgba(26, 26, 46, 0.5) 50%,
+        rgba(26, 26, 46, 0.7) 100%
+    );
+    z-index: 2;
+}
+
+/* 반짝이는 별 효과 (선택사항) */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20% 30%, white, transparent),
+        radial-gradient(2px 2px at 60% 70%, white, transparent),
+        radial-gradient(1px 1px at 50% 50%, white, transparent),
+        radial-gradient(1px 1px at 80% 10%, white, transparent),
+        radial-gradient(2px 2px at 90% 60%, white, transparent),
+        radial-gradient(1px 1px at 33% 80%, white, transparent);
+    background-size: 200% 200%;
+    animation: sparkle 3s ease-in-out infinite;
+    z-index: 3;
+    pointer-events: none;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
 }
 
 .hero-content {
     max-width: 800px;
     padding: 0 2rem;
+    position: relative;
+    z-index: 4;
+    text-align: center;
+    color: white;
 }
 
 .hero-title {
@@ -119,13 +189,15 @@ body {
     margin-bottom: 1.5rem;
     line-height: 1.2;
     letter-spacing: -1px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .hero-subtitle {
     font-size: 1.3rem;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.95);
     line-height: 1.6;
     font-weight: 300;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
 }
 
 .hero-scroll {
@@ -137,9 +209,55 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.85rem;
     letter-spacing: 1px;
+    z-index: 4;
+}
+
+.scroll-indicator {
+    width: 1px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.4);
+    animation: scrollDown 2s infinite;
+}
+
+@keyframes scrollDown {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translateY(10px);
+        opacity: 1;
+    }
+}
+
+/* 반응형 */
+@media (max-width: 968px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-images {
+        flex-direction: column;
+    }
+    
+    .hero-image-left,
+    .hero-image-right {
+        width: 100%;
+        height: 50%;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
 }
 
 .scroll-indicator {
